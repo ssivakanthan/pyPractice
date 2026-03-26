@@ -188,6 +188,55 @@ def binarysearch(arr, target):
 
     return "Target not Found"
 
+def mergesort(arr):
+
+    if len(arr) > 1:
+        left_arr = arr[:len(arr)//2]
+        right_arr = arr[len(arr)//2:]
+
+        #recurssion
+        mergesort(left_arr)
+        mergesort(right_arr)
+
+        #merge
+        i = j = k = 0
+
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i] < right_arr[j]:
+                arr[k] = left_arr[i]
+                i+=1
+            else: 
+                arr[k] = right_arr[j]
+                j+=1
+
+            k+=1
+
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i+=1
+            k+=1
+        
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j+=1
+            k+=1
+    return arr
+
+def insertionsort(arr):
+
+    
+    for i in range(len(arr)):
+        j = i
+        while j > 0 and arr[j] < arr[j - 1]:
+
+            arr[j-1], arr[j] = arr[j], arr[j-1]
+            j -= 1
+        else: i += 1
+
+    return arr        
+
+
+
 
 def main():
     print("Hello from pypractice!")
@@ -209,8 +258,9 @@ def main():
     # print (primenumberlist((0,1,3,4,5,6,7,8)))
     # print (primenumberlistwithfunc((0,1,3,4,5,6,7,8)))
     # print (secondlargets([9,2,3,7,1,2,3,4,4,2,2,4,6,7]))
-    print(binarysearch([1, 2, 7, 16, 22, 27, 34, 56, 59, 60, 67, 69, 100], 67))
-
+    # print(binarysearch([1, 2, 7, 16, 22, 27, 34, 56, 59, 60, 67, 69, 100], 67))
+    # print(mergesort([1, 12,4,6,11,2,9]))
+    print(insertionsort([1,67,3,7,4,2]))
 
 if __name__ == "__main__":
     main()
