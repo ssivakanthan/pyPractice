@@ -1,0 +1,30 @@
+{
+    "states": [
+      {
+        "name": "California",
+        "abbreviation": "CA",
+        "area_codes": ["213", "310", "415", "650", "916"]
+      },
+      {
+        "name": "New York",
+        "abbreviation": "NY",
+        "area_codes": ["212", "518", "718", "914"]
+      },
+      {
+        "name": "Texas",
+        "abbreviation": "TX",
+        "area_codes": ["214", "512", "713", "817"]
+      },
+      {
+        "name": "Florida",
+        "abbreviation": "FL",
+        "area_codes": ["305", "407", "813", "904"]
+      },
+      {
+        "name": "Illinois",
+        "abbreviation": "IL",
+        "area_codes": ["217", "312", "630", "773"]
+      }
+    ]
+  }
+  

@@ -1,5 +1,6 @@
 import array
 from operator import truediv
+from textwrap import indent
 from typing import Any
 
 
@@ -173,6 +174,7 @@ def secondlargets(numlist):
 
 
 def binarysearch(arr, target):
+    # sorted array required, start at midle and compare less or more, move boundries in
     left = 0
     right = len(arr) - 1
     mid = 0
@@ -189,7 +191,7 @@ def binarysearch(arr, target):
     return "Target not Found"
 
 def mergesort(arr):
-
+# recursive algo, divide array down into lowest possible element, sort and combine, repeat process 
     if len(arr) > 1:
         left_arr = arr[:len(arr)//2]
         right_arr = arr[len(arr)//2:]
@@ -223,7 +225,7 @@ def mergesort(arr):
     return arr
 
 def insertionsort(arr):
-
+# start at zero and compare left/right move forward, if larger element is found compare all the way back down
     
     for i in range(len(arr)):
         j = i
@@ -231,10 +233,266 @@ def insertionsort(arr):
 
             arr[j-1], arr[j] = arr[j], arr[j-1]
             j -= 1
-        else: i += 1
+        i += 1
 
-    return arr        
+    return arr   
 
+def bubblesort(arr):
+# start at zero compare left/right all the way to end of array and reset back to start
+    for i in range(len(arr)):
+        for j in range(0,len(arr)-1-i):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+        
+
+import json
+def jsonmodulesample():
+    people_string = """
+    {
+        "people": [
+            {
+                "name": "Sajishan Sivakanthan",
+                "phone": "555-555-5555",
+                "email": "ss@gmail.com",
+                "has_license": true
+            },
+            {
+                "name": "Saji Siva",
+                "phone": "555-555-5556",
+                "email": null,
+                "has_license": false
+            }
+        ]
+
+    }
+
+
+    """
+    #loads() - loads a string
+    data = json.loads(people_string)
+    #print(type(data['people']))
+    #print(data['people'])
+
+# Looping through an array which is now python list and accessing the name which is a dict value (people is key, name is value)
+    #for person in data['people']:
+    #    print(person['name'])
+
+    for person in data['people']:
+        del person['phone']
+
+    new_string = json.dumps(data, indent = 2, sort_keys=True)
+
+    print (new_string)
+
+
+def jsonmodulefromfile():
+    
+    with open('data.json') as f:
+        #load() - loads a file 
+        data = json.load(f)
+
+    for state in data['states']:
+        #print(state['name'],state['abbreviation'])
+        del state["area_codes"]
+
+    with open ('new_states.json', "w") as f:    
+        json.dump(data, f, indent = 2)
+
+import json
+import requests
+def jsonmodulefromapi():
+    response = requests.get("https://catfact.ninja/breeds")
+
+    data = response.json()
+
+    #print(len(data['data']))
+    #print(json.dumps(data, indent = 2))
+
+    cats = {}
+    
+    
+    i = 1
+    for item in data['data']:
+        cats[i] = {
+        'breed' : item['breed'],
+        'origin' : item['origin']
+        }
+        
+        #print(f"Breed is: {breed}, Origin is: {origin}")
+        i += 1
+
+    with open('new_cats.json', "w") as f:
+        json.dump(cats, f, indent = 2)
+    
+def completeAnagram(A,B):
+    # Return Int
+    # Input A,B
+    # Go through both strings, get a count for each char in the string
+    # compare the char count to second string
+    # delete the difference
+    dictA = {}
+    dictB = {}
+    count = 0
+
+    for char in A:
+        dictA[char] = dictA.get(char,0) + 1
+    
+    for char in B:
+        dictB[char] = dictB.get(char,0) + 1
+    
+    print(dictA)
+    print(dictB)
+
+    for index in dictA:
+   
+        if index in dictB:
+            if dictA.get(index) != dictB.get(index):
+                count = count + abs(dictA.get(index) - dictB.get(index))
+        else:
+            count = count + dictA.get(index)
+
+            
+    for index in dictB:
+
+        if index not in dictA:
+            count = count + dictB.get(index)
+
+    
+    return count
+
+def alternatingChar(string):
+
+    # given a string, that only Contains A & B
+    # iterate through that string and delete characters to ensure we only have A and B repeat
+    # return INT, min number of chars to delete
+
+    array = list(string)
+    count = 0
+
+    for i in range(len(array)-1):
+        if(array[i] == "A" and array[i+1] == "B") or ((array[i] == "B" and array[i+1] == "A")):
+            continue
+        else:
+            count +=1
+    
+    return count
+            
+  
+    
+
+def romantoint(string):
+
+    dict = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+    total = 0
+    for i in range(len(string)):
+        curr_char = string[i]
+        if i + 1 < len(string):
+            next_char = string[i+1]
+        else: 0
+
+        if dict[curr_char] >= dict[next_char]:
+            total = total + dict[curr_char]
+
+        else: 
+            total = total - dict[curr_char]
+    
+    return total    
+    
+def runlenencoding(s):
+    if len(s) == 0:
+        return ""
+
+    results = []
+
+    #aaabbc a3b2c1
+
+    i = 0
+    while i < len(s):
+        count = 1
+
+        while (i + 1 < len(s)) and (s[i] == s[i+1]):
+            count += 1
+            i +=1
+        
+        results.append(s[i] + str(count))
+
+        i+=1
+    return "".join(results)
+
+
+def stripe():
+    transactions = [
+    {'id': 'txn_001', 'user_name': 'Alice', 'amount': 5000,  'type': 'charge'},
+    {'id': 'txn_002', 'user_name': 'Bob',   'amount': 12000, 'type': 'charge'},
+    {'id': 'txn_003', 'user_name': 'Alice', 'amount': -5000, 'type': 'refund'},
+    {'id': 'txn_004', 'user_name': 'Carol', 'amount': 8000,  'type': 'charge'},
+    {'id': 'txn_005', 'user_name': 'Bob',   'amount': -3000, 'type': 'refund'},
+    {'id': 'txn_006', 'user_name': 'Dave',  'amount': 8000,  'type': 'charge'},
+    {'id': 'txn_007', 'user_name': 'Dave',  'amount': 8000,  'type': 'charge'},  # potential dup
+    {'id': 'txn_008', 'user_name': 'Bob',   'amount': 12000, 'type': 'charge'},  # potential dup
+]
+
+    newlist = []
+    for trans in transactions:
+        if trans['amount'] > 9000:
+            data = {'name':trans['user_name'],
+                    'balance':trans['amount']
+            }
+            newlist.append(data)
+    
+    return newlist
+
+def apiinterview():
+    # API Endpoint returns authors and the number of publishings, we want to retrieve a list of authors above a certain threshold of publishing (200)
+
+    # import modules
+
+    # set varibales
+
+    # get number of pages
+
+    # get response for both pages 
+
+    # check threshold and save if above
+
+    # return list
+
+    initial_response = requests.get("https://jsonmock.hackerrank.com/api/article_users")
+    data = initial_response.json()
+    total_pages = data['total_pages']
+
+    i = 1
+    list = []
+
+    while i <= total_pages:
+        params = {"page":i}
+        response = requests.get("https://jsonmock.hackerrank.com/api/article_users",params=params)
+        data = response.json()
+      
+
+        for author in data['data']:
+            if author['submission_count'] > 2000:
+                author_name = author['username']
+                author_count = author['submission_count']
+
+                author_final = {"author" : author_name,
+                                "count" : author_count}
+
+
+                list.append(author_final)
+
+        i += 1        
+    
+    return list
 
 
 
@@ -260,7 +518,18 @@ def main():
     # print (secondlargets([9,2,3,7,1,2,3,4,4,2,2,4,6,7]))
     # print(binarysearch([1, 2, 7, 16, 22, 27, 34, 56, 59, 60, 67, 69, 100], 67))
     # print(mergesort([1, 12,4,6,11,2,9]))
-    print(insertionsort([1,67,3,7,4,2]))
+    # print(insertionsort([1,67,3,7,4,2]))
+    # print(bubblesort([8,7,6,5,4,2,1]))
+    # jsonmodulesample()
+    # jsonmodulefromfile()
+    #jsonmodulefromapi()
+    # print(completeAnagram('fcrxzwscanmligyxyvym','jxwtrhvujlmrpdoqbisbwhmgpmeoke'))
+    # print(alternatingChar('ABBABAAA'))
+    # print(romantoint("CM"))
+    # print(runlenencoding("aaabbc"))
+    # print(stripe())
+    print(apiinterview())
+   
 
 if __name__ == "__main__":
     main()

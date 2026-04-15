@@ -1,0 +1,102 @@
+{
+  "1": {
+    "breed": "Abyssinian",
+    "origin": "Natural/Standard"
+  },
+  "2": {
+    "breed": "Aegean",
+    "origin": "Natural/Standard"
+  },
+  "3": {
+    "breed": "American Curl",
+    "origin": "Mutation"
+  },
+  "4": {
+    "breed": "American Bobtail",
+    "origin": "Mutation"
+  },
+  "5": {
+    "breed": "American Shorthair",
+    "origin": "Natural"
+  },
+  "6": {
+    "breed": "American Wirehair",
+    "origin": "Mutation"
+  },
+  "7": {
+    "breed": "Arabian Mau",
+    "origin": "Natural"
+  },
+  "8": {
+    "breed": "Australian Mist",
+    "origin": "Crossbreed"
+  },
+  "9": {
+    "breed": "Asian",
+    "origin": ""
+  },
+  "10": {
+    "breed": "Asian Semi-longhair",
+    "origin": "Crossbreed"
+  },
+  "11": {
+    "breed": "Balinese",
+    "origin": "Crossbreed"
+  },
+  "12": {
+    "breed": "Bambino",
+    "origin": "Crossbreed"
+  },
+  "13": {
+    "breed": "Bengal",
+    "origin": "Hybrid"
+  },
+  "14": {
+    "breed": "Birman",
+    "origin": "Natural"
+  },
+  "15": {
+    "breed": "Bombay",
+    "origin": "Crossbred"
+  },
+  "16": {
+    "breed": "Brazilian Shorthair",
+    "origin": "Natural"
+  },
+  "17": {
+    "breed": "British Semi-longhair",
+    "origin": ""
+  },
+  "18": {
+    "breed": "British Shorthair",
+    "origin": "Natural"
+  },
+  "19": {
+    "breed": "British Longhair",
+    "origin": ""
+  },
+  "20": {
+    "breed": "Burmese",
+    "origin": "Natural"
+  },
+  "21": {
+    "breed": "Burmilla",
+    "origin": "Crossbreed"
+  },
+  "22": {
+    "breed": "California Spangled",
+    "origin": "Crossbreed"
+  },
+  "23": {
+    "breed": "Chantilly-Tiffany",
+    "origin": ""
+  },
+  "24": {
+    "breed": "Chartreux",
+    "origin": "Natural"
+  },
+  "25": {
+    "breed": "Chausie",
+    "origin": "Hybrid"
+  }
+}
